@@ -35,17 +35,16 @@ class Person < ActiveRecord::Base
     when 9
       message = "Your numerology number is #{birth_path_num}.\nThis is the teacher. Number Nine is a tolerant, somewhat impractical, and sympathetic vibration. Ruled by Mars."
     else
-      message = "Mmm, your birthdate doesn't add up, no numerology number for you!"
+      message = "Uh oh! Your birth path number is not 1-9!"
     end
   end
 
   def self.valid_birthdate(input)
-    if input.length == 8 && input.match(/^[0-9]+[0-9]$/)
-      return true
+    if(input.length == 8 && !input.match(/^[0-9]+[0-9]$/).nil?)
+      true
     else
-      return false
+      false
     end
   end
-
+  
 end
-
