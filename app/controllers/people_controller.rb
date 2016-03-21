@@ -1,3 +1,4 @@
 get '/people' do 
-  'This is a people page!'
+  @people = Person.all
+  erb :"/people/index"
 end
