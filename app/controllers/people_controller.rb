@@ -21,7 +21,7 @@ end
 
 get '/people/:id/edit' do
   @person = Person.find(params[:id])
-  erb :'/people/edit'
+  erb :"/people/edit"
 end
 
 put '/people/:id' do
@@ -31,6 +31,12 @@ put '/people/:id' do
   person.birthdate = params[:birthdate]
   person.save
   redirect "/people/#{person.id}"
+end
+
+delete '/people/:id' do
+  person = Person.find(params[:id])
+  person.delete
+  redirect "/people"
 end
 
 get '/people/:id' do
