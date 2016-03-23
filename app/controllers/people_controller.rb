@@ -14,7 +14,7 @@ post '/people' do
   else
     birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
   end
-
+  
   person = Person.create(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
   if @person.valid?
     @person.save
@@ -37,7 +37,6 @@ put '/people/:id' do
   @person.first_name = params[:first_name]
   @person.last_name = params[:last_name]
   @person.birthdate = params[:birthdate]
-
   if @person.valid?
     @person.save
     redirect "/people/#{@person.id}"
@@ -45,7 +44,7 @@ put '/people/:id' do
     @person.errors.full_messages.each do |msg|
       @errors = "#{@errors} #{msg}."
     end
-    erb :"/people/edit"
+    erb :"/people/edit"    
   end
 end
 
